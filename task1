@@ -1,0 +1,19 @@
+import csv
+from collections import Counter
+import matplotlib.pyplot as plt
+
+genders = []
+
+with open("gender_data.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        genders.append(row["gender"])
+
+counts = Counter(genders)
+
+plt.bar(counts.keys(), counts.values())
+plt.title("Gender Distribution")
+plt.xlabel("Gender")
+plt.ylabel("Count")
+
+plt.show()
